@@ -1,34 +1,23 @@
 import React from "react";
 
-class App extends React.Component{
+class App extends React.Component{  
 
   state = {
-    count : 0
+    isLoading : true,
+    moives: []
   };
 
-  add = () => {
-    this.setState(current =>({count : current.count + 1}));
-  };
-  minus = () => {
-    this.setState(current =>({count : current.count - 1}));
-  };
   componentDidMount() {
-    console.log("component rednered")
+    setTimeout(()=>{
+      this.setState({isLoading : false, book: true})
+    }, 6000);
   }
-  componentDidUpdate() {
-    console.log("i just update")
-  }
-  componentWillUnmount(){
-    console.log("Goodbye")
-  }
+
   render() {
-    console.log("I'm");
-    return (<div id="Potato">
-        <h1>The number is : {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
+    const {isLoading} = this.state;
+    return (
+      <div>{isLoading ? "Loading..." : "we are ready"}</div>
+    )
   }
 }
 
